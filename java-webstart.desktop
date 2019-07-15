@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Java Web Start
+Comment=Java Web Start
+Exec=/usr/bin/javaws %u
+Terminal=false
+Type=Application
+Icon=javaws
+Categories=Application;Network;
+MimeType=application/x-java-jnlp-file;
