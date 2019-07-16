@@ -7,6 +7,7 @@ ARG FIREFOX_VERSION=52.8.0-1.el6.centos
 
 RUN yum install --assumeyes firefox-$FIREFOX_VERSION \
                             java-$JAVA_VERSION-openjdk \
+                            libcanberra-gtk2 \
                             icedtea-web \
                             dbus-x11
 
