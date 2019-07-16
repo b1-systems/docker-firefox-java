@@ -19,12 +19,12 @@ docker pull ugrawert/firefox-java:latest
 
 The following environment variables can be passed via `docker run -e`.
 
-| Variable  | Explanation                 | Example                |
-| --------- | --------------------------- | ---------------------- |
-| DISPLAY   | The X11 display port to use | DISPLAY=:1             |
-| URL       | Firefox opens this URL      | URL=http://google.com/ |
-| uid       | Run Firefox with this uid   | uid=$(id -u)           |
-| gid       | Run Firefox with this gid   | gid=$(id -u)           |
+| Variable  | Explanation                 | Example                  |
+| --------- | --------------------------- | ------------------------ |
+| DISPLAY   | The X11 display port to use | `DISPLAY=:1`             |
+| URL       | Firefox opens this URL      | `URL=http://google.com/` |
+| uid       | Run Firefox with this uid   | `uid=$(id -u)`           |
+| gid       | Run Firefox with this gid   | `gid=$(id -g)`           |
 
 ## Run
 
