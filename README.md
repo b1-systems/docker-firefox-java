@@ -44,3 +44,24 @@ docker run --rm -ti \
            -e "URL=${URL}" \
            ugrawert/firefox-java
 ```
+
+## Proxy settings
+
+To configure global proxy settings for Firefox, place and adjust the following
+content into your working directory.
+
+proxy.js:
+
+```javascript
+pref("network.proxy.http", "proxy.server.local");
+pref("network.proxy.http_port", 8080);
+pref("network.proxy.ssl", "proxy.server.local");
+pref("network.proxy.ssl_port", 8080);
+pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1, *.server.local");
+pref("network.proxy.type", 1);
+pref("network.proxy.share_proxy_settings", true);
+```
+
+```sh
+docker run -v "$PWD/proxy.js:/etc/firefox/pref/proxy.js" ..
+```
