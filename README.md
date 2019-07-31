@@ -66,6 +66,14 @@ pref("network.proxy.share_proxy_settings", true);
 docker run -v "$PWD/proxy.js:/etc/firefox/pref/proxy.js" ..
 ```
 
+## Custom preferences
+
+You can add your custom preferences file by overriding the default preferences.
+
+```shell
+docker run -v "mozilla.cfg:/usr/lib64/firefox/defaults/preferences/all-redhat.js"
+```
+
 ## Problems
 
 ### IcedTea cannot run Java application
