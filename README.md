@@ -65,3 +65,18 @@ pref("network.proxy.share_proxy_settings", true);
 ```sh
 docker run -v "$PWD/proxy.js:/etc/firefox/pref/proxy.js" ..
 ```
+
+## Problems
+
+### IcedTea cannot run Java application
+
+If you cannot run the Java application from within the container, you can still
+try to run `javaws` from your local machine.
+
+Instead of opening the JNLP file (the default), you can save the file to
+`/home/firefox/Downloads` and run on your local command line. `javaws` is
+provided by the package `icedtea-web` on Linux systems.
+
+```
+$ javaws $HOME/Downloads/launch.jpnl
+```
