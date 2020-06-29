@@ -29,7 +29,21 @@ The following environment variables can be passed via `docker run -e`.
 ## Run
 
 ```sh
-xhost +local:docker
+URL=https://remote-board/;
+docker run --rm -ti \
+           -v "${HOME}/Downloads:/home/firefox/Downloads:rw" \
+           -v "/tmp/.X11-unix:/tmp/.X11-unix" \
+           -e "DISPLAY=unix${DISPLAY}" \
+           -e "uid=$(id -u)" \
+           -e "gid=$(id -g)" \
+           -e "URL=${URL}" \
+           ugrawert/firefox-java
+```
+
+### MacOS
+
+```sh
+xhost +localhost
 ```
 
 ```sh
@@ -37,8 +51,7 @@ URL=https://remote-board/;
 docker run --rm -ti \
            -v "${HOME}/Downloads:/home/firefox/Downloads:rw" \
            -v "/tmp/.X11-unix:/tmp/.X11-unix" \
-           -v "/dev/snd:/dev/snd" \
-           -e "DISPLAY=unix${DISPLAY}" \
+           -e "DISPLAY=host.docker.internal:0" \
            -e "uid=$(id -u)" \
            -e "gid=$(id -g)" \
            -e "URL=${URL}" \
