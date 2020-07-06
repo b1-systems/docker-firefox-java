@@ -91,13 +91,20 @@ docker run -v "mozilla.cfg:/usr/lib64/firefox/defaults/preferences/all-redhat.js
 
 ### IcedTea cannot run Java application
 
-If you cannot run the Java application from within the container, you can still
-try to run `javaws` from your local machine.
+If you cannot run the Java application from within Firefox, you can still
+try to run `javaws` from command line.
 
 Instead of opening the JNLP file (the default), you can save the file to
-`/home/firefox/Downloads` and run on your local command line. `javaws` is
-provided by the package `icedtea-web` on Linux systems.
+`/home/firefox/Downloads` and then close Firefox.
+
+Run the following command to run `javaws` command instead of Firefox.
 
 ```
-$ javaws $HOME/Downloads/launch.jpnl
+docker run --rm -ti \
+ -v "${HOME}/Downloads:/home/firefox/Downloads:rw" \
+ -v "/tmp/.X11-unix:/tmp/.X11-unix" \
+ -e "DISPLAY=host.docker.internal:0" \
+ -e "uid=$(id -u)" \
+ -e "gid=$(id -g)" \
+ ugrawert/firefox-java javaws /home/firefox/Downloads/launch.jpnl
 ```

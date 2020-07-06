@@ -22,4 +22,4 @@ COPY --chown=firefox:firefox defaults.list /home/firefox/.local/share/applicatio
 COPY --chown=firefox:firefox java-webstart.desktop /home/firefox/.local/share/applications
 COPY mozilla.cfg /usr/lib64/firefox/defaults/preferences/all-redhat.js
 
-ENTRYPOINT ["/tmp/start-firefox.sh"]
+CMD ["/tmp/start-firefox.sh"]
