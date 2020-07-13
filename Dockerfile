@@ -17,9 +17,9 @@ RUN groupadd firefox && \
     chown -R firefox:firefox /home/firefox && \
     dbus-uuidgen > /var/lib/dbus/machine-id
 
-COPY start-firefox.sh /tmp/
+COPY start-firefox.sh /
 COPY --chown=firefox:firefox defaults.list /home/firefox/.local/share/applications
 COPY --chown=firefox:firefox java-webstart.desktop /home/firefox/.local/share/applications
 COPY mozilla.cfg /usr/lib64/firefox/defaults/preferences/all-redhat.js
 
-CMD ["/tmp/start-firefox.sh"]
+CMD ["/start-firefox.sh"]
