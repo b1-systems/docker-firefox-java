@@ -31,6 +31,7 @@ The following environment variables can be passed via `docker run -e`.
 ```sh
 URL=https://remote-board/;
 docker run --rm -ti \
+           -v "$PWD/.ff_profile:/home/firefox/.mozilla/firefox" \
            -v "${HOME}/Downloads:/home/firefox/Downloads:rw" \
            -v "/tmp/.X11-unix:/tmp/.X11-unix" \
            -e "DISPLAY=unix${DISPLAY}" \
@@ -49,6 +50,7 @@ xhost +localhost
 ```sh
 URL=https://remote-board/;
 docker run --rm -ti \
+           -v "$PWD/.ff_profile:/home/firefox/.mozilla/firefox" \
            -v "${HOME}/Downloads:/home/firefox/Downloads:rw" \
            -v "/tmp/.X11-unix:/tmp/.X11-unix" \
            -e "DISPLAY=host.docker.internal:0" \
@@ -115,7 +117,7 @@ Run the following command to run `javaws` command instead of Firefox.
 docker run --rm -ti \
  -v "${HOME}/Downloads:/home/firefox/Downloads:rw" \
  -v "/tmp/.X11-unix:/tmp/.X11-unix" \
- -e "DISPLAY=host.docker.internal:0" \
+ -e "DISPLAY=unix${DISPLAY}" \
  -e "uid=$(id -u)" \
  -e "gid=$(id -g)" \
  ugrawert/firefox-java javaws /home/firefox/Downloads/launch.jpnl

@@ -6,6 +6,7 @@ NAME="firefox-java"
 IMAGE="${IMAGE:-ugrawert/firefox-java}"
 X11_SOCKET="${X11_SOCKET:-/tmp/.X11-unix}"
 DOWNLOADS="${DOWNLOADS:-${HOME}/Downloads}"
+PROFILE="$PWD/.ff_profile"
 uid=${uid:-`id -u`}
 gid=${gid:-`id -g`}
 URL=${URL:-$1}
@@ -21,6 +22,7 @@ case "$OSTYPE" in
 esac
 
 docker run --rm -ti \
+           -v "${PROFILE}:/home/firefox/.mozilla/firefox" \
            -v "${DOWNLOADS}:/home/firefox/Downloads:rw" \
            -v "${X11_SOCKET}:/tmp/.X11-unix" \
            -e "DISPLAY=${DOCKER_DISPLAY}" \
