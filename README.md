@@ -89,6 +89,18 @@ docker run -v "mozilla.cfg:/usr/lib64/firefox/defaults/preferences/all-redhat.js
 
 ## Problems
 
+### vsyscall is disabled on some Linux distributions
+
+The glibc version used in the container is utilizing vsyscall. On recent Linux
+distributions like Debian, vsyscall is disabled.
+
+To enable vsyscall, add the following parameter to your Kernel parameter list
+at `/etc/default/grub.conf`.
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="vsyscall=emulate"
+```
+
 ### IcedTea cannot run Java application
 
 If you cannot run the Java application from within Firefox, you can still
